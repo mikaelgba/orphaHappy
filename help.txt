@@ -6,3 +6,4 @@ Cria o tsconfig.json--> .\node_modules\.bin\tsc --init
 
 pacote para pode executar ts e node no projeto --> npm install ts-node-dev
 
+para instalar o banco usando o typeorm --> npm install typeorm "banca desejado"; ex: npm install typeorm sqlite3

@@ -1,3 +1,5 @@
+npm install ou yarn add caso estaja usando yarn
+
 start no backend --> node src/server.ts ou node start  apenas depois de adicionar um script no package.json)
 
 instalar o typescript como dependencia --> npm install typescript
@@ -6,4 +8,10 @@ Cria o tsconfig.json--> .\node_modules\.bin\tsc --init
 
 pacote para pode executar ts e node no projeto --> npm install ts-node-dev
 
-para instalar o banco usando o typeorm --> npm install typeorm "banca desejado"; ex: npm install typeorm sqlite3
+para instalar o banco usando o typeorm --> npm install typeorm "banco desejado"; ex: npm install typeorm sqlite3
+
+para criar uma migration --> yarn typeorm migration:create -n create_orphanages
+
+para pegar o que esta na migrations e adicionar no banco -> yarn typeorm migration:run
+
+desfazer a migration --> yarn typeorm migration:revert

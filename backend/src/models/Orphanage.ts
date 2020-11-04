@@ -1,6 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-
 /*  strictPropertyInitialization no tsconfig.ts precisa ser false*/
 /*  e também habilitar  "experimentalDecorators" e "emitDecoratorMetadata", ambos precisam ser true */
 
@@ -29,5 +28,4 @@ export default class Orphanage {
 
     @Column()
     open_on_weekends: boolean;
-
 }

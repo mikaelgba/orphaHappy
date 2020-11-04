@@ -15,3 +15,5 @@ para criar uma migration --> yarn typeorm migration:create -n create_orphanages
 para pegar o que esta na migrations e adicionar no banco -> yarn typeorm migration:run
 
 desfazer a migration --> yarn typeorm migration:revert
+
+biblioteca que faz upload de imagens --> yarn add multer

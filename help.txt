@@ -17,3 +17,5 @@ para pegar o que esta na migrations e adicionar no banco -> yarn typeorm migrati
 desfazer a migration --> yarn typeorm migration:revert
 
 biblioteca que faz upload de imagens --> yarn add multer
+
+parapegar os erros mesmo usandp metodos asicronos --> yarn add express-async-errors

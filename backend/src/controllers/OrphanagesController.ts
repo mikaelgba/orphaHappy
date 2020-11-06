@@ -1,6 +1,7 @@
 import { getRepository } from 'typeorm';
 import Orphanage from '../models/Orphanage';
 import { Request, Response } from 'express';
+import orphanageView from '../views/orphanageView';
 
 export default {
 
@@ -8,9 +9,11 @@ export default {
 
         const orphanagesRepository = getRepository(Orphanage);
 
-        const orphanages_list = await orphanagesRepository.find();
+        const orphanages_list = await orphanagesRepository.find({
+            relations: ['images']
+        });
 
-        return response.json(orphanages_list);
+        return response.json(orphanageView.renderMany(orphanages_list));
 
     },
     async show_orphanage(request: Request, response: Response){
@@ -19,9 +22,11 @@ export default {
 
         const { id } = request.params;
 
-        const orphanage = await orphanagesRepository.findOneOrFail(id);
+        const orphanage = await orphanagesRepository.findOneOrFail(id, {
+            relations: ['images']
+        });
 
-        return response.json(orphanage);
+        return response.json(orphanageView.render(orphanage));
 
     },
     async create_orphanage(request: Request, response: Response){
@@ -37,6 +42,14 @@ export default {
         } = request.body;
     
         const orphanagesRepository = getRepository(Orphanage);
+
+        const request_images = request.files as Express.Multer.File[];
+
+        const images = request_images.map(image => {
+            return {
+                path: image.filename
+            }
+        })
     
         const orphanageadd = orphanagesRepository.create({
             name,
@@ -45,7 +58,8 @@ export default {
             about,
             instructions,
             opening_hours,
-            open_on_weekends
+            open_on_weekends, 
+            images
         })
         orphanagesRepository.save(orphanageadd);
     
